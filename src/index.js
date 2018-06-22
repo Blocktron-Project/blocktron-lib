@@ -66,9 +66,8 @@ class Blocktron {
     })();
 
     /**
-     * An atomic block in the chain
      * @type {Object}
-     * @const
+     * @const newBlock - An atomic block in the chain
      * @property {Number} index - The chronological position of this block in the chain
      * @property {String} timeStamp - The time of creation of the block
      * @property {String} transactions - The value in transaction to be recorded
