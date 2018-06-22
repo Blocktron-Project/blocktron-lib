@@ -55,21 +55,15 @@ class Blocktron {
     /**
      * Validate the parameters
      */
-    nonce = nonce
-      ? nonce
-      : (function() {
-          new Error("Nonce required");
-        })();
-    previousHash = previousHash
-      ? previousHash
-      : (function() {
-          new Error("Previous hash required");
-        })();
-    hash = hash
-      ? hash
-      : (function() {
-          new Error("Hash required");
-        })();
+    nonce = nonce ? nonce : (function () {
+      new Error("Nonce required");
+    })();
+    previousHash = previousHash ? previousHash : (function () {
+      new Error("Previous hash required");
+    })();
+    hash = hash ? hash : (function () {
+      new Error("Hash required");
+    })();
 
     /**
      * An atomic block in the chain

@@ -1,4 +1,9 @@
 {
-	"printWidth": 100,
-	"parser": "flow"
+	"parser": "flow",
+	"printWidth": 80,
+	"tabWidth": 2,
+	"useTabs": false,
+	"semi": true,
+	"encoding": "utf-8",
+	"extensions": [".js", ".ts"]
 }

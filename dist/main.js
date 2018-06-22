@@ -155,7 +155,6 @@ var Blocktron = function () {
   _createClass(Blocktron, [{
     key: "createNewBlock",
     value: function createNewBlock(nonce, previousHash, hash) {
-
       /**
        * Validate the parameters
        */
