@@ -32,73 +32,78 @@
  * @class Blocktron
  */
 class Blocktron {
+  /**
+   * The Blocktron Class properties constructor
+   */
+  constructor() {
+    this.chain = [];
+    this.newTransactions = [];
+  }
+
+  /**
+   * Blocktron methods
+   */
+
+  /**
+   * @function createNewBlock
+   * Blocktron method to create a new block on to the blockchain
+   * @param {String} nonce - The nonce obtained from proof-of-work
+   * @param {String} previousHash - The hash of the previous block
+   * @param {String} hash - The hash generated from this block's data
+   */
+  createNewBlock(nonce, previousHash, hash) {
     /**
-     * The Blocktron Class properties constructor
+     * Validate the parameters
      */
-    constructor() {
-        this.chain = [];
-        this.newTransactions = [];
-    }
+    nonce = nonce
+      ? nonce
+      : (function() {
+          new Error("Nonce required");
+        })();
+    previousHash = previousHash
+      ? previousHash
+      : (function() {
+          new Error("Previous hash required");
+        })();
+    hash = hash
+      ? hash
+      : (function() {
+          new Error("Hash required");
+        })();
 
     /**
-     * Blocktron methods
+     * An atomic block in the chain
+     * @type {Object}
+     * @const
+     * @property {Number} index - The chronological position of this block in the chain
+     * @property {String} timeStamp - The time of creation of the block
+     * @property {String} transactions - The value in transaction to be recorded
+     * @property {String} nonce - The nonce obtained from proof-of-work
+     * @property {String} hash - The hash generated from this block's data
+     * @property {String} previousHash - The hash of the previous block
      */
+    const newBlock = {
+      index: this.chain.length + 1,
+      timeStamp: Date.now(),
+      transactions: this.newTransactions,
+      nonce: nonce,
+      hash: hash,
+      previousHash: previousHash
+    };
 
     /**
-     * @function createNewBlock
-     * Blocktron method to create a new block on to the blockchain
-     * @param {String} nonce - The nonce obtained from proof-of-work
-     * @param {String} previousHash - The hash of the previous block
-     * @param {String} hash - The hash generated from this block's data
+     * Reset the newTransactions array back to empty after creating the new block,
+     * so that the createNewBlock method can start over again from zero.
      */
-    createNewBlock(nonce, previousHash, hash) {
-        
-        /**
-         * Validate the parameters
-         */
-        nonce = nonce ? nonce : (function () {
-            new Error("Nonce required");
-        })();
-        previousHash ? previousHash : (function () {
-            new Error("Previous hash required");
-        })();
-        hash = hash ? hash : (function () {
-            new Error("Hash required");
-        })();
+    this.newTransactions = [];
 
-        /**
-         * An atomic block in the chain
-         * @type {Object}
-         * @const
-         * @property {Number} index - The chronological position of this block in the chain
-         * @property {String} timeStamp - The time of creation of the block
-         * @property {String} transactions - The value in transaction to be recorded
-         * @property {String} nonce - The nonce obtained from proof-of-work
-         * @property {String} hash - The hash generated from this block's data
-         * @property {String} previousHash - The hash of the previous block
-         */
-        const newBlock = {
-            index: this.chain.length + 1,
-            timeStamp: Date.now(),
-            transactions: this.newTransactions,
-            nonce: nonce,
-            hash: hash,
-            previousHash: previousHash
-        };
+    /**
+     * Then push the new block to the chain
+     */
+    this.chain.push(newBlock);
 
-        /**
-         * Reset the newTransactions array back to empty after creating the new block,
-         * so that the createNewBlock method can start over again from zero.
-         */
-        this.newTransactions = [];
-
-        /**
-         * Then push the new block to the chain
-         */
-        this.chain.push(newBlock);
-
-        return newBlock;
-    }
+    return newBlock;
+  }
 }
 
 module.exports = Blocktron;

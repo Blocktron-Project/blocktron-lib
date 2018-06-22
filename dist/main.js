@@ -162,7 +162,7 @@ var Blocktron = function () {
       nonce = nonce ? nonce : function () {
         new Error("Nonce required");
       }();
-      previousHash ? previousHash : function () {
+      previousHash = previousHash ? previousHash : function () {
         new Error("Previous hash required");
       }();
       hash = hash ? hash : function () {
