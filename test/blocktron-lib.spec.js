@@ -10,24 +10,24 @@ const blockchain = new Blocktron;
 /**
  * Empty chain test 1
  */
-test('Given an empty instance of blocktron-lib', () => {
+test('Test 1: Given an empty instance of blocktron-lib', () => {
     expect(blockchain).not.toBeNull();
 });
 
 /**
  * Empty chain test 2
  */
-test('Given an empty instance of blocktron-lib', () => {
+test('Test 2: Given an empty instance of blocktron-lib', () => {
     expect(blockchain).toEqual({
         chain: [],
-        newTransactions: []
+        pendingTransactions: []
     });
 });
 
 /**
  * Create a block - test
  */
-test('Try adding data to block', () => {
+test('Test 3: Try adding data to block', () => {
     blockchain.createNewBlock(2389, 'a87sdfs8df8ds89f', '23huih2342jh34j');
     expect(blockchain).not.toBeNull();
 });
