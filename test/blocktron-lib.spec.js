@@ -4,8 +4,8 @@
  * Written by: Sandeep Vattapparambil
  */
 
-const blocktron = require('../src/index');
-const blockchain = new blocktron;
+const Blocktron = require('../src/index');
+const blockchain = new Blocktron;
 
 /**
  * Empty chain test 1
