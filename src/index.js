@@ -108,7 +108,7 @@ class Blocktron {
     /**
      * This method simply returns the block object from the data structure at the penultimate position
      */
-    return this.chain(this.chain.length - 1);
+    return this.chain[this.chain.length - 1];
   };
 
   /**
