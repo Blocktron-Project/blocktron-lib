@@ -37,7 +37,7 @@ class Blocktron {
    */
   constructor() {
     this.chain = [];
-    this.newTransactions = [];
+    this.pendingTransactions = [];
   }
 
   /**
@@ -71,7 +71,7 @@ class Blocktron {
      * @const newBlock - An atomic block in the chain
      * @property {Number} index - The chronological position of this block in the chain
      * @property {String} timeStamp - The time of creation of the block
-     * @property {String} transactions - The value in transaction to be recorded
+     * @property {String} transactions - The value of transaction to be recorded
      * @property {String} nonce - The nonce obtained from proof-of-work
      * @property {String} hash - The hash generated from this block's data
      * @property {String} previousHash - The hash of the previous block
@@ -79,17 +79,17 @@ class Blocktron {
     const newBlock = {
       index: this.chain.length + 1,
       timeStamp: Date.now(),
-      transactions: this.newTransactions,
+      transactions: this.pendingTransactions,
       nonce: nonce,
       hash: hash,
       previousHash: previousHash
     };
 
     /**
-     * Reset the newTransactions array back to empty after creating the new block,
+     * Reset the pendingTransactions array back to empty after creating the new block,
      * so that the createNewBlock method can start over again from zero.
      */
-    this.newTransactions = [];
+    this.pendingTransactions = [];
 
     /**
      * Then push the new block to the chain
@@ -149,7 +149,12 @@ class Blocktron {
     /**
      * Push the new transaction to the chain
      */
-    this.newTransactions.push(newTransactions);
+    this.pendingTransactions.push(newTransactions);
+
+    /**
+     * Retrun the number of the block, this transaction will be added to
+     */
+    return this.getLastBlock()['index'] + 1;
   };
 }
 
