@@ -48,3 +48,25 @@ test('Test 5: Mine the block back to the transactions after creating the block',
     expect(blockchain).not.toBeNull();
     expect(blockchain.chain[1]).not.toBeNull();
 });
+
+/**
+ * Test the hashBlock method
+ */
+test('Test : Given previousBlockHash, currentBlockData, and nonce, generate hash string', () => {
+    const previousBlockHash = '234jn23kj4b23kj4b';
+    const nonce = 131232;
+    const currentBlockData = [{
+        amount: 20,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 30,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 50,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }];
+    expect(blockchain.hashBlock(previousBlockHash, nonce, currentBlockData)).not.toBeNull();
+});

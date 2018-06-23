@@ -118,7 +118,8 @@ class Blocktron {
    */
   getLastBlock() {
     /**
-     * This method simply returns the block object from the data structure at the penultimate position
+     * This method simply returns the block object from the data 
+     * structure at the penultimate position
      */
     return this.chain[this.chain.length - 1];
   };
