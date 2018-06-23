@@ -31,3 +31,11 @@ test('Test 3: Try adding data to block', () => {
     blockchain.createNewBlock(2389, 'a87sdfs8df8ds89f', '23huih2342jh34j');
     expect(blockchain).not.toBeNull();
 });
+
+/**
+ * Create a transaction and add to pending transactions
+ */
+test('Test 4: Create a new transaction and add to pending transactions', () => {
+    blockchain.createNewTransaction(100, 'ROSS2IU3Y42U3', 'RACHELJ234J234KJ20');
+    expect(blockchain).not.toBeNull();
+});
