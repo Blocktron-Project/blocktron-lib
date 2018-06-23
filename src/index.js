@@ -28,6 +28,15 @@
 'use strict';
 
 /**
+ * A JavaScript component to compute the SHA256 of strings or bytes.
+ * Note: when Node.js is detected, the Node Crypto component is used 
+ * instead of re-implementing the SHA256 hash logic.
+ * @see {@link https://www.npmjs.com/package/sha256|NPM sha256}
+ * @see {@link https://en.wikipedia.org/wiki/SHA-2|SHA-2}
+ */
+const hash = require('sha256');
+
+/**
  * The main Blocktron Class.
  * @class Blocktron
  */
@@ -96,6 +105,9 @@ class Blocktron {
      */
     this.chain.push(newBlock);
 
+    /**
+     * Returns the newly created block
+     */
     return newBlock;
   };
 
@@ -152,9 +164,33 @@ class Blocktron {
     this.pendingTransactions.push(newTransactions);
 
     /**
-     * Retrun the number of the block, this transaction will be added to
+     * Returns the number of the block, this transaction will be added to
      */
     return this.getLastBlock()['index'] + 1;
+  };
+
+  /**
+   * @function hashBlock
+   * A helper method to generate a hash string out of a blocks data
+   * @param {String} previousBlockHash - The hash of the previous block
+   * @param {Object} currentBlockData - The current block's data
+   * @param {Number} nonce - The nonce of the block
+   * @returns {String} - The hash string generated out of the block data
+   */
+  hashBlock(previousBlockHash, currentBlockData, nonce) {
+    /**
+     * Validate the parameters
+     */
+    previousBlockHash = previousBlockHash ? previousBlockHash : (function () {
+      throw new Error('Previous block hash required');
+    })();
+    currentBlockData = currentBlockData ? currentBlockData : (function () {
+      throw new Error('Current block data required');
+    })();
+    nonce = nonce ? nonce : (function () {
+      throw new Error('Nonce required');
+    })();
+    return hash(previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData));
   };
 }
 
