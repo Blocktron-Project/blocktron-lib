@@ -25,7 +25,7 @@
  *     strict mode code can sometimes be made to run faster than identical code that's not strict mode.
  *  3. Prohibits some syntax likely to be defined in future versions of ECMAScript.
  */
-"use strict";
+'use strict';
 
 /**
  * The main Blocktron Class.
@@ -50,26 +50,21 @@ class Blocktron {
    * @param {String} nonce - The nonce obtained from proof-of-work
    * @param {String} previousHash - The hash of the previous block
    * @param {String} hash - The hash generated from this block's data
+   * @returns {Object} - Returns the new block object
    */
   createNewBlock(nonce, previousHash, hash) {
     /**
      * Validate the parameters
      */
-    nonce = nonce ?
-      nonce :
-      (function () {
-        new Error("Nonce required");
-      })();
-    previousHash = previousHash ?
-      previousHash :
-      (function () {
-        new Error("Previous hash required");
-      })();
-    hash = hash ?
-      hash :
-      (function () {
-        new Error("Hash required");
-      })();
+    nonce = nonce ? nonce : (function () {
+      throw new Error('Nonce required');
+    })();
+    previousHash = previousHash ? previousHash : (function () {
+      throw new Error('Previous hash required');
+    })();
+    hash = hash ? hash : (function () {
+      throw new Error('Hash required');
+    })();
 
     /**
      * @type {Object}
@@ -102,7 +97,60 @@ class Blocktron {
     this.chain.push(newBlock);
 
     return newBlock;
-  }
+  };
+
+  /**
+   * @function getLastBlock
+   * A method to retreive the penultimate block with respect to current block
+   * @returns {Object} - Returns the block object
+   */
+  getLastBlock() {
+    /**
+     * This method simply returns the block object from the data structure at the penultimate position
+     */
+    return this.chain(this.chain.length - 1);
+  };
+
+  /**
+   * @function createNewTransaction
+   * A method to create a new transaction
+   * @param {Number} amount - The amount/value to be recorded
+   * @param {String} sender - The adress of the sender
+   * @param {String} reciever - The address of the reciever
+   * @returns {Object} - Returns the transaction object
+   */
+  createNewTransaction(amount, sender, reciever) {
+    /**
+     * Validate the parameters
+     */
+    amount = amount ? amount : (function () {
+      throw new Error('Amount required');
+    })();
+    sender = sender ? sender : (function () {
+      throw new Error('Sender required');
+    })();
+    reciever = reciever ? reciever : (function () {
+      throw new Error('Reciever required');
+    })();
+
+    /**
+     * @type {Object}
+     * @const newTransactions - An atomic transactions block in the chain
+     * @property {Number} amount - The value/amount to be recorded
+     * @property {String} sender - The adress of the sender
+     * @property {String} reciever - The address of the reciever
+     */
+    const newTransactions = {
+      amount: amount,
+      sender: sender,
+      reciever: reciever
+    };
+
+    /**
+     * Push the new transaction to the chain
+     */
+    this.newTransactions.push(newTransactions);
+  };
 }
 
 module.exports = Blocktron;
