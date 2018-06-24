@@ -4,7 +4,7 @@
  * Written by: Sandeep Vattapparambil
  */
 
-const Blocktron = require('../src/index');
+const Blocktron = require('../dist/main.min.js');
 const blockchain = new Blocktron;
 
 /**
