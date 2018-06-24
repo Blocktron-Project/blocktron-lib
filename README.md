@@ -141,7 +141,7 @@ blockchain.createNewBlock('<nonce>', '<previousHash>', '<hash>');
 ##### Parameters
 
 | Parameter | Type | Description | Optional | 
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | **nonce** | *Number* | The nonce number obtained from proof-of-work method | No | 
 | **previousHash** | *String* | The hash of the previous block | No |
 | **hash** | *String* | The hash generated from this block's data | No |
