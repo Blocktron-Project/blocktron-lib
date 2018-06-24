@@ -265,8 +265,8 @@ blockchain.proofOfWork('<previousBlockHash>', '<currentBlockData>');
 | **currentBlockData** | *Object* | The current block's data | No |
 
 result:
-```sh
-1441212
+```js
+1441212 //some large integer
 ```
 The result of this proof of work method is a number which is the nonce which generates the correct hash of the format `'0000<hash>'`. This nonce when used to generate a hash will generate the correctly formated hash, thus making it the proof we need. This is secure because, the algorithm has to run `1441212` times to generate the correct hash, in this case. This is a time consuming and resource intensive process, Thus when someone tries to tamper the integrity of a blockchain, they have to rebuild the entire blockchain using this proof of work algorithm to generate correct hash and nonce combination for the entire blockchain, which is impossible.
 
