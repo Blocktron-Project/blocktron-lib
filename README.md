@@ -188,6 +188,46 @@ result:
 	previousHash: 'a87sdfs8df8ds89f'
 }
 ```
+#### Create a new transaction
+A blockchain method to create a new transaction to be recorded on to the chain.
+```js
+blockchain.createNewTransaction('<amount>', '<sender>', '<reciever>')
+```
+##### Parameters
+| Parameter | Type | Description | Optional | 
+| --- | --- | --- | --- |
+| **amount** | *Number* | The amount/value to be recorded | No|
+| **sender** | *String* | The adress of the sender | No |
+| **reciever** | *String* | The address of the reciever | No |
+
+result:
+```sh
+Blocktron {
+	chain: [{
+			index: 1,
+			timeStamp: 1529854616451,
+			transactions: [],
+			nonce: 1,
+			hash: '0',
+			previousHash: '0'
+		},
+		{
+			index: 2,
+			timeStamp: 1529854616451,
+			transactions: [],
+			nonce: 2389,
+			hash: '23huih2342jh34j',
+			previousHash: 'a87sdfs8df8ds89f'
+		}
+	],
+	pendingTransactions: [{
+		amount: 100,
+		sender: 'ROSS2IU3Y42U3',
+		reciever: 'RACHELJ234J234KJ20'
+	}]
+}
+```
+> **Note:** The new transaction is always added to the pending transactions array, for it to be mined later.
 
 ## Continuous Integration (CI)
 Continuous Integration services monitor repositories for changes, then automatically run unit tests on your behalf, typically in a containerized environment. To test this setup works in a continuous integration environment, an integration was done with [Travis CI](https://travis-ci.org/). According to the [Travis Node.js Documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/), Travis automatically runs `npm install` and `npm test`. The only additional thing I had to add to the Travis configuration was to run `npm run build` before running the tests. The working Travis config looks like this:
