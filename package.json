@@ -1,12 +1,13 @@
 {
   "name": "blocktron-lib",
   "version": "0.0.1",
-  "description": "An elegant blockchain framework built using javascript",
-  "main": "index.js",
+  "description": "A simple blockchain data structure library",
+  "main": "dist/main.min.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
     "test": "jest test/blocktron-lib.spec.js",
-    "build": "webpack"
+    "build-dev": "webpack --config=webpack.dev.config.js",
+    "build": "webpack --config=webpack.config.js"
   },
   "repository": {
     "type": "git",
