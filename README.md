@@ -139,6 +139,7 @@ A blockchain method to create a new block
 blockchain.createNewBlock('<nonce>', '<previousHash>', '<hash>');
 ```
 ##### Parameters
+
 | Parameter | Type | Description | Optional | 
 | --- | --- | --- | --- | --- |
 | **nonce** | *Number* | The nonce number obtained from proof-of-work method | No | 
