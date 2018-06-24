@@ -168,6 +168,26 @@ Blocktron {
 	pendingTransactions: []
 }
 ```
+> **Note:** The genesis block is created using this method internally.
+
+#### Get last block
+A blockchain method to get the last block on the chain
+```js
+blockchain.getLastBlock()
+```
+> **Note:** This method does not accept any parameters, it simply returns the block object from the data structure at the penultimate position
+
+result:
+```sh
+{
+	index: 2,
+	timeStamp: 1529853936748,
+	transactions: [],
+	nonce: 2389,
+	hash: '23huih2342jh34j',
+	previousHash: 'a87sdfs8df8ds89f'
+}
+```
 
 ## Continuous Integration (CI)
 Continuous Integration services monitor repositories for changes, then automatically run unit tests on your behalf, typically in a containerized environment. To test this setup works in a continuous integration environment, an integration was done with [Travis CI](https://travis-ci.org/). According to the [Travis Node.js Documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/), Travis automatically runs `npm install` and `npm test`. The only additional thing I had to add to the Travis configuration was to run `npm run build` before running the tests. The working Travis config looks like this:
