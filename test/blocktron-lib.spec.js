@@ -17,11 +17,8 @@ test('Test 1: Given an empty instance of blocktron-lib, expect blockchain not to
 /**
  * Empty chain test 2
  */
-test('Test 2: Given an empty instance of blocktron-lib, expect block chain to have a genesis structure', () => {
-    expect(blockchain).toEqual({
-        chain: [],
-        pendingTransactions: []
-    });
+test('Test 2: Given an empty instance of blocktron-lib, expect block chain to have a default genesis structure defined', () => {
+    expect(blockchain).toBeDefined();
 });
 
 /**
