@@ -10,6 +10,7 @@
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 **NPM**
+
 You can install **blocktron-lib** from npm using:
 ```sh
 npm install blocktron-lib --save
@@ -20,6 +21,7 @@ const Blocktron = require('blocktron-lib');
 const blockchain = new Blocktron;
 ```
 **GitHub**
+
 You can download a zip of the project repo or clone the repo from your terminsl using the command:
 ```sh
 git clone https://github.com/Blocktron-Project/blocktron-lib.git
