@@ -18,6 +18,16 @@ The following programs/libraries/languages/compilers/editors/tools etc are requi
 - Code Editor (```VSCode preferably```)
 
 ## Installation
+
+**blocktron-lib** module has two assets in every version release builds, a compressed build and an uncompressed build.
+
+| build | asset | size |
+| --- | --- | --- |
+| compressed| main.min.js | 3KiB |
+| uncompressed| main.js | 14.9KiB |
+
+by default npm module is set to choose the compressed build.
+
 **NPM**
 
 You can install **blocktron-lib** from npm using:

@@ -29,6 +29,7 @@ module.exports = {
     plugins: [
         new PrettierPlugin({
             'parser': 'flow',
+            'singleQuote': true,
             'printWidth': 90,
             'tabWidth': 3,
             'useTabs': false,
