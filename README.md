@@ -318,7 +318,7 @@ This project is built with the following technology stack:
 - **GitHub**
 - **Travis-CI**
 - **Jest**
-
+![stack](techstack.png)
 ## Contributing
 Please read [CONTRIBUTING.md](https://github.com/Blocktron-Project/blocktron-lib/blob/master/CONTRIBUTING.md) for details on contributing to the project and [CODE_OF_CONDUCT.md](https://github.com/Blocktron-Project/blocktron-lib/blob/master/CODE_OF_CONDUCT.md) for the process for submitting pull requests to us.
 
@@ -343,4 +343,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Acknowledgements
 Thanks to [Eric Traub](https://www.linkedin.com/in/eric-traub-76b38953/) for publishing a wonderful course on Blockchains.
+
 Made with ❤️ by [Sandeep Vattapparambil](https://github.com/SandeepVattapparambil).
