@@ -108,7 +108,7 @@ For a development setup this library depends on the following npm modules:
 ## API Documentation
 The various apis provided by the blocktron-lib are described below:
 
-**Start a blockchain**
+#### Start a blockchain
 You can start the blockchain by importing the blocktron-lib to your app using:
 ```js
 const Blocktron = require('blocktron-lib');
@@ -133,13 +133,12 @@ Blocktron {
 ```
 You can see that the blockchain object already has a block with some data in it. This block is the default block of every blockchain. It is called as the **Genesis Block**. Whenever a new blockchain is initialized, it defaults with a genesis block and further blocks are linked from the genesis block.
 
-**Create a new block**
+#### Create a new block
 A blockchain method to create a new block
 ```js
 blockchain.createNewBlock('<nonce>', '<previousHash>', '<hash>');
 ```
 ##### Parameters
-
 | Parameter | Type | Description | Optional | 
 | --- | --- | --- | --- |
 | **nonce** | *Number* | The nonce number obtained from proof-of-work method | No | 
