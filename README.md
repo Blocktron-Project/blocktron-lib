@@ -229,6 +229,24 @@ Blocktron {
 ```
 > **Note:** The new transaction is always added to the pending transactions array, for it to be mined later.
 
+#### Generate hash of a block
+A helper method to generate a hash string out of a blocks data
+```js
+blockchain.hashBlock('<previousBlockHash>', '<currentBlockData>', '<nonce>')
+```
+##### Parameters
+| Parameter | Type | Description | Optional | 
+| --- | --- | --- | --- |
+| **previousBlockHash** | *String* | The hash of the previous block | No |
+| **currentBlockData** | *Object* | The current block's data | No |
+| **nonce** | *Number* | The nonce of the block | Yes |
+
+result:
+```sh
+445101fbd33c3b30f00d143dba65cfe219bace079d1d06b4b7b28922d7a611d6
+```
+
+#### 
 ## Continuous Integration (CI)
 Continuous Integration services monitor repositories for changes, then automatically run unit tests on your behalf, typically in a containerized environment. To test this setup works in a continuous integration environment, an integration was done with [Travis CI](https://travis-ci.org/). According to the [Travis Node.js Documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/), Travis automatically runs `npm install` and `npm test`. The only additional thing I had to add to the Travis configuration was to run `npm run build` before running the tests. The working Travis config looks like this:
 
