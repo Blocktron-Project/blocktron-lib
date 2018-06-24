@@ -2,7 +2,7 @@
 # blocktron-lib
 [![GitHub license](https://img.shields.io/github/license/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/blob/master/LICENSE) ![Dependencies](https://david-dm.org/Blocktron-Project/blocktron-lib.svg) ![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg) ![status](https://img.shields.io/badge/status-stable-brightgreen.svg) ![Travis-build](https://travis-ci.org/Blocktron-Project/blocktron-lib.svg?branch=master) [![GitHub issues](https://img.shields.io/github/issues/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/issues) [![GitHub forks](https://img.shields.io/github/forks/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/network) [![GitHub stars](https://img.shields.io/github/stars/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/stargazers) [![Twitter](https://img.shields.io/twitter/url/https/github.com/Blocktron-Project/blocktron-lib.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBlocktron-Project%2Fblocktron-lib)
 
-**blocktron-lib** module is a member of the Blocktron Project. blocktron-lib is a javascript library housing a blockchain class, and the core blockchain data structures with various blockchain methods and functionalities. This library is fully extensible to accommodate any blockchain applications. Its completely independent and follows a class constructor design pattern.
+**blocktron-lib** module is a member of the Blocktron Project. blocktron-lib is a javascript library housing a blockchain class, and the core blockchain data structures with various blockchain methods and functionalities. This library is fully extensible to accommodate any blockchain applications. Its completely independent and follows a class constructor design pattern and is written using ES6 specifications.
 
 **Blocktron** is a simple yet elegant and efficient blockchain framework written in **Javascript** for **Node.js** environment. Blocktron is aimed at developing generic, multipurpose blockchain platforms and softwares for various application use-cases, and also for educational and awareness purposes. blocktron-lib is completely tested using Jest framework. This library is built from the ground up using only opensource technologies.
 
@@ -67,6 +67,7 @@ Blocktron {
 	pendingTransactions: []
 }
 ```
+
 ## Dependency
 
 The blocktron-lib library is dependent only on the ***`sha256`*** npm module to run on production. Its a JavaScript component to compute the `SHA256` of strings or bytes.
@@ -105,6 +106,68 @@ For a development setup this library depends on the following npm modules:
 - Unit tests added using Jest
 
 ## API Documentation
+The various apis provided by the blocktron-lib are described below:
+
+**Start a blockchain**
+You can start the blockchain by importing the blocktron-lib to your app using:
+```js
+const Blocktron = require('blocktron-lib');
+const blockchain = new Blocktron;
+
+//then simply console logging will give you the blockchain in its initial form
+console.log(blockchain);
+```
+which will result in the following output to the terminal
+```sh
+Blocktron {
+	chain: [{
+		index: 1,
+		timeStamp: 1529827768993,
+		transactions: [],
+		nonce: 1,
+		hash: '0',
+		previousHash: '0'
+	}],
+	pendingTransactions: []
+}
+```
+You can see that the blockchain object already has a block with some data in it. This block is the default block of every blockchain. It is called as the **Genesis Block**. Whenever a new blockchain is initialized, it defaults with a genesis block and further blocks are linked from the genesis block.
+
+**Create a new block**
+A blockchain method to create a new block
+```js
+blockchain.createNewBlock('<nonce>', '<previousHash>', '<hash>');
+```
+##### Parameters
+| Parameter | Type | Description | Optional | 
+| --- | --- | --- | --- | --- |
+| **nonce** | *Number* | The nonce number obtained from proof-of-work method | No | 
+| **previousHash** | *String* | The hash of the previous block | No |
+| **hash** | *String* | The hash generated from this block's data | No |
+
+result:
+```sh
+Blocktron {
+	chain: [{
+			index: 1,
+			timeStamp: 1529852953815,
+			transactions: [],
+			nonce: 1,
+			hash: '0',
+			previousHash: '0'
+		},
+		{
+			index: 2,
+			timeStamp: 1529852953815,
+			transactions: [],
+			nonce: 2389,
+			hash: '23huih2342jh34j',
+			previousHash: 'a87sdfs8df8ds89f'
+		}
+	],
+	pendingTransactions: []
+}
+```
 
 ## Continuous Integration (CI)
 Continuous Integration services monitor repositories for changes, then automatically run unit tests on your behalf, typically in a containerized environment. To test this setup works in a continuous integration environment, an integration was done with [Travis CI](https://travis-ci.org/). According to the [Travis Node.js Documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/), Travis automatically runs `npm install` and `npm test`. The only additional thing I had to add to the Travis configuration was to run `npm run build` before running the tests. The working Travis config looks like this:
