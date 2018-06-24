@@ -34,7 +34,7 @@
  * @see {@link https://www.npmjs.com/package/sha256|NPM sha256}
  * @see {@link https://en.wikipedia.org/wiki/SHA-2|SHA-2}
  */
-const hash = require('sha256');
+const hasher = require('sha256');
 
 /**
  * The main Blocktron Class.
@@ -133,6 +133,7 @@ class Blocktron {
    * @returns {Object} - Returns the transaction object
    */
   createNewTransaction(amount, sender, reciever) {
+
     /**
      * Validate the parameters
      */
@@ -179,6 +180,7 @@ class Blocktron {
    * @returns {String} - The hash string generated out of the block data
    */
   hashBlock(previousBlockHash, currentBlockData, nonce) {
+
     /**
      * Validate the parameters
      */
@@ -188,10 +190,46 @@ class Blocktron {
     currentBlockData = currentBlockData ? currentBlockData : (function () {
       throw new Error('Current block data required');
     })();
-    nonce = nonce ? nonce : (function () {
-      throw new Error('Nonce required');
-    })();
-    return hash(previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData));
+    nonce = nonce ? nonce : '';
+    return hasher(previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData));
+  };
+
+  /**
+   * @function proofOfWork
+   * An opinionated, standardized, and universally approved blockchain method 
+   * to validate random blocks added to the blockchain.
+   * Process: 
+   * 1. Repeatedly hash the block data until it reaches the format: '0000<HF98WDYS89DCSD>'.
+   * 2. Uses current block data as well as previous block hash.
+   * 3. Continuously change the nonce until the correct hash is obtained.
+   * 4. Return the nonce value which generates the correct hash.
+   * @see {@link https://keepingstock.net/explaining-blockchain-how-proof-of-work-enables-trustless-consensus-2abed27f0845| Explaining blockchain}
+   * @param {*} previousBlockHash 
+   * @param {*} currentBlockData 
+   */
+  proofOfWork(previousBlockHash, currentBlockData) {
+
+    /**
+     * Use block scoping rather than constants, because there is a guarenteed rebinding of data to objects.
+     */
+    let nonce = 0;
+    let hashString = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+
+    /**
+     * While-loop is prefered over for-loop or other looping constructs.
+     * The loop exit point is unknown in this case.
+     * @see {@link https://stackoverflow.com/questions/39969145/while-loops-vs-for-loops-in-javascript|While Loops vs. For Loops in JavaScript?}
+     */
+    while (hashString.substring(0, 4) !== '0000') {
+      nonce++;
+      hashString = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+    }
+
+    /**
+     * Simple returns the nonce value which can generate the correct 
+     * hash string of pre-determined format, thus the proof.
+     */
+    return nonce;
   };
 }
 
