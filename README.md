@@ -60,6 +60,7 @@ Blocktron {
 ## Dependency
 
 The blocktron-lib library is dependent only on the ***`sha256`*** npm module to run on production. Its a JavaScript component to compute the `SHA256` of strings or bytes.
+
 For a development setup this library depends on the following npm modules:
 - [**babel-core**](https://www.npmjs.com/package/babel-core)
     The babel compiler core
@@ -119,9 +120,24 @@ This project uses Jest framework for unit testing. All unit tests are available 
 npm run test
 ```
 ## Built with
+This project is built with the following technology stack:
+- **JavaScript**
+- **Node.js**
+- **Git**
+- **GitHub**
+- **Travis-CI**
+- **Jest**
+
 ## Contributing
+Please read [CONTRIBUTING.md](https://github.com/Blocktron-Project/blocktron-lib/blob/master/CONTRIBUTING.md) for details on contributing to the project and [CODE_OF_CONDUCT.md](https://github.com/Blocktron-Project/blocktron-lib/blob/master/CODE_OF_CONDUCT.md) for the process for submitting pull requests to us.
+
 ## Versioning
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags](https://github.com/Blocktron-Project/blocktron-lib/tags) on this repository.
+
 ## Authors
+* [Sandeep Vattapparambil](https://github.com/SandeepVattapparambil) - Founder, Lead Developer & Maintainer
+
+See also the list of [contributors](https://github.com/Blocktron-Project/blocktron-lib/blob/master/AUTHORS.md) who participates in this project.
 
 ## License
 The MIT License
