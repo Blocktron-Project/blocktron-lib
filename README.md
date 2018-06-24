@@ -100,6 +100,7 @@ For a development setup this library depends on the following npm modules:
 
 **v 0.0.1**
 - Complete blockchain implementation in javascript
+- Updated documentations
 - Code optimizations
 - Continuous integration using Travis-CI
 - Complete code test coverage
@@ -255,6 +256,20 @@ The Proof of work algorithm implemented in this library is as follows:
 4. Return the nonce value which generates the correct hash.
 The proofOfWork algorithm runs to a complexity of `O(n)`.
 
+Algorithm:
+```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
+ProofOfWork()
+Input <previousBlockHash>, <currentBlockData>
+Output <nonce>
+
+SET nonce = 0
+GET hashString = hashBlock(previousBlockHash, currentBlockData, nonce)
+DO nonce++
+    hashString = hashBlock(previousBlockHash, currentBlockData, nonce)
+
+WHILE hashString.substring(0, 4) !== '0000'
+```
+
 ```js
 blockchain.proofOfWork('<previousBlockHash>', '<currentBlockData>');
 ```
@@ -269,6 +284,8 @@ result:
 1441212 //some large integer
 ```
 The result of this proof of work method is a number which is the nonce which generates the correct hash of the format `'0000<hash>'`. This nonce when used to generate a hash will generate the correctly formated hash, thus making it the proof we need. This is secure because, the algorithm has to run `1441212` times to generate the correct hash, in this case. This is a time consuming and resource intensive process, Thus when someone tries to tamper the integrity of a blockchain, they have to rebuild the entire blockchain using this proof of work algorithm to generate correct hash and nonce combination for the entire blockchain, which is impossible.
+
+Further examples and documentations will be updated soon, or you can run the test specs from the tests folder.
 
 ## Continuous Integration (CI)
 Continuous Integration services monitor repositories for changes, then automatically run unit tests on your behalf, typically in a containerized environment. To test this setup works in a continuous integration environment, an integration was done with [Travis CI](https://travis-ci.org/). According to the [Travis Node.js Documentation](http://docs.travis-ci.com/user/languages/javascript-with-nodejs/), Travis automatically runs `npm install` and `npm test`. The only additional thing I had to add to the Travis configuration was to run `npm run build` before running the tests. The working Travis config looks like this:
