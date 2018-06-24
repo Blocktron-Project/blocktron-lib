@@ -28,13 +28,13 @@ module.exports = {
     //Configuration settings
     plugins: [
         new PrettierPlugin({
-            "parser": "flow",
-            "printWidth": 90,
-            "tabWidth": 3,
-            "useTabs": false,
-            "semi": true,
-            "encoding": "utf-8",
-            "extensions": [".js", ".ts"]
+            'parser': 'flow',
+            'printWidth': 90,
+            'tabWidth': 3,
+            'useTabs': false,
+            'semi': true,
+            'encoding': 'utf-8',
+            'extensions': ['.js', '.ts']
         })
     ],
     //set minification flag

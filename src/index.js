@@ -214,8 +214,9 @@ class Blocktron {
    * 3. Continuously change the nonce until the correct hash is obtained.
    * 4. Return the nonce value which generates the correct hash.
    * @see {@link https://keepingstock.net/explaining-blockchain-how-proof-of-work-enables-trustless-consensus-2abed27f0845| Explaining blockchain}
-   * @param {*} previousBlockHash 
-   * @param {*} currentBlockData 
+   * @param {String} previousBlockHash - The hash of the previous block
+   * @param {Object} currentBlockData - The current block's data
+   * @returns {Number} - Returns the valid nonce number
    */
   proofOfWork(previousBlockHash, currentBlockData) {
 
