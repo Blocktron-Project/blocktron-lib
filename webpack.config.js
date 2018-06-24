@@ -1,5 +1,5 @@
 /**
- * Webpack config file for blocktron-lib
+ * Webpack config file for blocktron-lib production
  * Sandeep Vattapparambil
  */
 
@@ -39,7 +39,7 @@ module.exports = {
     ],
     //set minification flag
     optimization: {
-        minimize: false
+        minimize: true
     },
     //set webpack bundle entry point
     entry: './src/index.js',
@@ -48,7 +48,7 @@ module.exports = {
         //set output target for commonjs require
         libraryTarget: 'commonjs2',
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: 'main.min.js'
     },
     //set up babel transpiler
     module: {
