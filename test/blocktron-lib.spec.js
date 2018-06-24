@@ -10,14 +10,14 @@ const blockchain = new Blocktron;
 /**
  * Empty chain test 1
  */
-test('Test 1: Given an empty instance of blocktron-lib', () => {
+test('Test 1: Given an empty instance of blocktron-lib, expect blockchain not to be null', () => {
     expect(blockchain).not.toBeNull();
 });
 
 /**
  * Empty chain test 2
  */
-test('Test 2: Given an empty instance of blocktron-lib', () => {
+test('Test 2: Given an empty instance of blocktron-lib, expect block chain to have a genesis structure', () => {
     expect(blockchain).toEqual({
         chain: [],
         pendingTransactions: []
@@ -52,7 +52,7 @@ test('Test 5: Mine the block back to the transactions after creating the block',
 /**
  * Test the hashBlock method
  */
-test('Test : Given previousBlockHash, currentBlockData, and nonce, generate hash string', () => {
+test('Test 6: Given previousBlockHash, currentBlockData, and nonce, generate hash string', () => {
     const previousBlockHash = '234jn23kj4b23kj4b';
     const nonce = 131232;
     const currentBlockData = [{
@@ -68,5 +68,50 @@ test('Test : Given previousBlockHash, currentBlockData, and nonce, generate hash
         sender: 'wer23232323rw34fd3',
         reciepient: 'sdf7s89dufs98duf'
     }];
-    expect(blockchain.hashBlock(previousBlockHash, nonce, currentBlockData)).not.toBeNull();
+    expect(blockchain.hashBlock(previousBlockHash, currentBlockData, nonce)).not.toBeNull();
+});
+
+/**
+ * Test the proof of work method
+ */
+test('Test 7: Given previousBlockHash and currentBlockData, obtain the correct nonce', () => {
+    const previousBlockHash = '234jn23kj4b23kj4b';
+    const currentBlockData = [{
+        amount: 20,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 30,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 50,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }];
+    let result = blockchain.proofOfWork(previousBlockHash, currentBlockData);
+    expect(result).not.toBeNull();
+    expect(result).toBeGreaterThan(0);
+});
+
+/**
+ * Test hashBlock method after obtaining the result
+ */
+test('Test 8: Given previousBlockHash, currentBlockData, and a valid nonce, generate a vlid hash string', () => {
+    const previousBlockHash = '234jn23kj4b23kj4b';
+    const currentBlockData = [{
+        amount: 20,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 30,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }, {
+        amount: 50,
+        sender: 'wer23232323rw34fd3',
+        reciepient: 'sdf7s89dufs98duf'
+    }];
+    let nonce = blockchain.proofOfWork(previousBlockHash, currentBlockData);
+    expect(blockchain.hashBlock(previousBlockHash, currentBlockData, nonce)).not.toBeNull();
 });
