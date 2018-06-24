@@ -47,6 +47,10 @@ class Blocktron {
   constructor() {
     this.chain = [];
     this.pendingTransactions = [];
+    /**
+     * Genesis block defaults
+     */
+    this.createNewBlock(1, '0', '0');
   }
 
   /**
