@@ -318,6 +318,7 @@ This project is built with the following technology stack:
 - **GitHub**
 - **Travis-CI**
 - **Jest**
+
 ![stack](techstack.png)
 
 ## Contributing
