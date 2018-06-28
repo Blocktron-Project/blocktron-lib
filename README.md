@@ -254,20 +254,22 @@ The Proof of work algorithm implemented in this library is as follows:
 2. Uses current block data as well as previous block hash.
 3. Continuously change the nonce until the correct hash is obtained.
 4. Return the nonce value which generates the correct hash.
-The proofOfWork algorithm runs to a complexity of `O(n)`.
+The proofOfWork algorithm runs to a complexity of **`O(n)`**.
 
-Algorithm:
-```{r, tidy=FALSE, eval=FALSE, highlight=FALSE }
+**Algorithm:**
+```{r, tidy=FALSE, eval=FALSE, highlight=TRUE }
 ProofOfWork()
 Input <previousBlockHash>, <currentBlockData>
 Output <nonce>
 
+START
 SET nonce = 0
 GET hashString = hashBlock(previousBlockHash, currentBlockData, nonce)
-DO nonce++
-    hashString = hashBlock(previousBlockHash, currentBlockData, nonce)
+	DO nonce++
+		hashString = hashBlock(previousBlockHash, currentBlockData, nonce)
 
-WHILE hashString.substring(0, 4) !== '0000'
+	WHILE hashString.substring(0, 4) !== '0000'
+END
 ```
 
 ```js
