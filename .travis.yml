@@ -8,6 +8,6 @@ install:
   - npm install -g codecov
 
 script:
-  - npm run build-prod
+  - npm run build
   - npm test
   - codecov
