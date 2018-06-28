@@ -102,7 +102,7 @@ For a development setup this library depends on the following npm modules:
 - Complete blockchain implementation in javascript
 - Updated documentations
 - Code optimizations
-- Continuous integration using Travis-CI
+- Continuous integration using Travis-CI & CircleCI
 - Complete code test coverage
 - Unit tests added using Jest
 
