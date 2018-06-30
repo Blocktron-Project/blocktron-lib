@@ -249,10 +249,10 @@ var Blocktron = function () {
      * A method to create a new transaction
      * @param {Number} amount - The amount/value to be recorded
      * @param {String} sender - The adress of the sender
-     * @param {String} reciever - The address of the reciever
+     * @param {String} receiver - The address of the receiver
      * @returns {Object} - Returns the transaction object
      */
-    value: function createNewTransaction(amount, sender, reciever) {
+    value: function createNewTransaction(amount, sender, receiver) {
 
       /**
        * Validate the parameters
@@ -263,8 +263,8 @@ var Blocktron = function () {
       sender = sender ? sender : function () {
         throw new Error('Sender required');
       }();
-      reciever = reciever ? reciever : function () {
-        throw new Error('Reciever required');
+      receiver = receiver ? receiver : function () {
+        throw new Error('receiver required');
       }();
 
       /**
@@ -272,12 +272,12 @@ var Blocktron = function () {
        * @const newTransactions - An atomic transactions block in the chain
        * @property {Number} amount - The value/amount to be recorded
        * @property {String} sender - The adress of the sender
-       * @property {String} reciever - The address of the reciever
+       * @property {String} receiver - The address of the receiver
        */
       var newTransactions = {
         amount: amount,
         sender: sender,
-        reciever: reciever
+        receiver: receiver
       };
 
       /**
@@ -329,7 +329,7 @@ var Blocktron = function () {
      * 2. Uses current block data as well as previous block hash.
      * 3. Continuously change the nonce until the correct hash is obtained.
      * 4. Return the nonce value which generates the correct hash.
-     * The entire proofOfWork calculation runs to a time complexity of O(n).
+     * The proofOfWork algorithm runs to a complexity of O(n).
      * @see {@link https://keepingstock.net/explaining-blockchain-how-proof-of-work-enables-trustless-consensus-2abed27f0845| Explaining blockchain}
      * @param {String} previousBlockHash - The hash of the previous block
      * @param {Object} currentBlockData - The current block's data

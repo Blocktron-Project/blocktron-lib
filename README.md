@@ -192,14 +192,14 @@ result:
 #### Create a new transaction
 A blockchain method to create a new transaction to be recorded on to the chain.
 ```js
-blockchain.createNewTransaction('<amount>', '<sender>', '<reciever>')
+blockchain.createNewTransaction('<amount>', '<sender>', '<receiver>')
 ```
 ##### Parameters
 | Parameter | Type | Description | Optional | 
 | --- | --- | --- | --- |
 | **amount** | *Number* | The amount/value to be recorded | No|
 | **sender** | *String* | The adress of the sender | No |
-| **reciever** | *String* | The address of the reciever | No |
+| **receiver** | *String* | The address of the receiver | No |
 
 result:
 ```sh
