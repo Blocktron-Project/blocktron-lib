@@ -121,7 +121,7 @@ module.exports =
 
 /**
  * A JavaScript component to compute the SHA256 of strings or bytes.
- * Note: when Node.js is detected, the Node Crypto component is used 
+ * Note: when Node.js is detected, the Node Crypto component is used
  * instead of re-implementing the SHA256 hash logic.
  * @see {@link https://www.npmjs.com/package/sha256|NPM sha256}
  * @see {@link https://en.wikipedia.org/wiki/SHA-2|SHA-2}
@@ -149,10 +149,10 @@ var Blocktron = function () {
     this.pendingTransactions = [];
     /**
      * Genesis block defaults
-     * A genesis block is the first block of a block chain. Modern versions of Bitcoin number 
-     * it as block 0, though very early versions counted it as block 1. The genesis block is 
-     * almost always hardcoded into the software of the applications that utilize its block 
-     * chain. It is a special case in that it does not reference a previous block, and for Bitcoin 
+     * A genesis block is the first block of a block chain. Modern versions of Bitcoin number
+     * it as block 0, though very early versions counted it as block 1. The genesis block is
+     * almost always hardcoded into the software of the applications that utilize its block
+     * chain. It is a special case in that it does not reference a previous block, and for Bitcoin
      * and almost all of its derivatives, it produces an unspendable subsidy.
      * @see {@link https://en.bitcoin.it/wiki/Genesis_block|Bitcoin Wiki}
      */
@@ -224,25 +224,22 @@ var Blocktron = function () {
        */
       return newBlock;
     }
-  }, {
-    key: 'getLastBlock',
-
 
     /**
      * @function getLastBlock
      * A method to retreive the penultimate block with respect to current block
      * @returns {Object} - Returns the block object
      */
+
+  }, {
+    key: 'getLastBlock',
     value: function getLastBlock() {
       /**
-       * This method simply returns the block object from the data 
+       * This method simply returns the block object from the data
        * structure at the penultimate position
        */
       return this.chain[this.chain.length - 1];
     }
-  }, {
-    key: 'createNewTransaction',
-
 
     /**
      * @function createNewTransaction
@@ -252,8 +249,10 @@ var Blocktron = function () {
      * @param {String} receiver - The address of the receiver
      * @returns {Object} - Returns the transaction object
      */
-    value: function createNewTransaction(amount, sender, receiver) {
 
+  }, {
+    key: 'createNewTransaction',
+    value: function createNewTransaction(amount, sender, receiver) {
       /**
        * Validate the parameters
        */
@@ -290,9 +289,6 @@ var Blocktron = function () {
        */
       return this.getLastBlock()['index'] + 1;
     }
-  }, {
-    key: 'hashBlock',
-
 
     /**
      * @function hashBlock
@@ -302,8 +298,10 @@ var Blocktron = function () {
      * @param {Number} nonce - The nonce of the block
      * @returns {String} - The hash string generated out of the block data
      */
-    value: function hashBlock(previousBlockHash, currentBlockData, nonce) {
 
+  }, {
+    key: 'hashBlock',
+    value: function hashBlock(previousBlockHash, currentBlockData, nonce) {
       /**
        * Validate the parameters
        */
@@ -316,15 +314,12 @@ var Blocktron = function () {
       nonce = nonce ? nonce : '';
       return hasher(previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData));
     }
-  }, {
-    key: 'proofOfWork',
-
 
     /**
      * @function proofOfWork
-     * An opinionated, standardized, and universally approved blockchain method 
+     * An opinionated, standardized, and universally approved blockchain method
      * to validate random blocks added to the blockchain.
-     * Process: 
+     * Process:
      * 1. Repeatedly hash the block data until it reaches the format: '0000<HF98WDYS89DCSD>'.
      * 2. Uses current block data as well as previous block hash.
      * 3. Continuously change the nonce until the correct hash is obtained.
@@ -335,8 +330,10 @@ var Blocktron = function () {
      * @param {Object} currentBlockData - The current block's data
      * @returns {Number} - Returns the valid nonce number
      */
-    value: function proofOfWork(previousBlockHash, currentBlockData) {
 
+  }, {
+    key: 'proofOfWork',
+    value: function proofOfWork(previousBlockHash, currentBlockData) {
       /**
        * Use block scoping rather than constants, because there is a guarenteed rebinding of data to objects.
        */
@@ -354,7 +351,7 @@ var Blocktron = function () {
       }
 
       /**
-       * Simple returns the nonce value which can generate the correct 
+       * Simple returns the nonce value which can generate the correct
        * hash string of pre-determined format, thus the proof.
        */
       return nonce;

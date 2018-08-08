@@ -1,5 +1,5 @@
 ![logo](https://raw.githubusercontent.com/Blocktron-Project/blocktron-lib/master/logo.png)
-# blocktron-lib v0.0.2
+# blocktron-lib v0.0.4
 [![NPM](https://nodei.co/npm/blocktron-lib.png)](https://nodei.co/npm/blocktron-lib/)
 
 [![GitHub license](https://img.shields.io/github/license/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/blob/master/LICENSE) ![Dependencies](https://david-dm.org/Blocktron-Project/blocktron-lib.svg) ![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg) ![status](https://img.shields.io/badge/status-stable-brightgreen.svg) ![CircleCI](https://circleci.com/gh/Blocktron-Project/blocktron-lib.svg?style=svg) ![Travis-build](https://travis-ci.org/Blocktron-Project/blocktron-lib.svg?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Blocktron-Project/blocktron-lib/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Blocktron-Project/blocktron-lib?targetFile=package.json) ![codefactor](https://www.codefactor.io/Content/badges/A.svg) [![Greenkeeper badge](https://badges.greenkeeper.io/Blocktron-Project/blocktron-lib.svg)](https://greenkeeper.io/) [![GitHub issues](https://img.shields.io/github/issues/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/issues) [![GitHub forks](https://img.shields.io/github/forks/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/network) [![GitHub stars](https://img.shields.io/github/stars/Blocktron-Project/blocktron-lib.svg)](https://github.com/Blocktron-Project/blocktron-lib/stargazers) [![Twitter](https://img.shields.io/twitter/url/https/github.com/Blocktron-Project/blocktron-lib.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FBlocktron-Project%2Fblocktron-lib) 
@@ -99,6 +99,9 @@ For a development setup this library depends on the following npm modules:
     Webpack CLI encapsulates all code related to CLI handling. It captures options and sends them to webpack compiler. You can also find functionality for initializing a project and migrating between versions.
 
 ## Changelog
+
+**v 0.0.2**
+- Bumped to resolve yarn-npm version conflict
 
 **v 0.0.2**
 - Documentation updates
