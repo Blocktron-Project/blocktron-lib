@@ -1,4 +1,4 @@
-![logo](logo-lib.png)
+![logo](logo.png)
 # blocktron-lib
 [![NPM](https://nodei.co/npm/blocktron-lib.png)](https://nodei.co/npm/blocktron-lib/)
 
