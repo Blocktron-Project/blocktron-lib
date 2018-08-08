@@ -100,7 +100,7 @@ For a development setup this library depends on the following npm modules:
 
 ## Changelog
 
-**v 0.0.2**
+**v 0.0.4**
 - Bumped to resolve yarn-npm version conflict
 
 **v 0.0.2**
