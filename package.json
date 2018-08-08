@@ -1,6 +1,6 @@
 {
   "name": "blocktron-lib",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple blockchain data structure library",
   "main": "dist/main.min.js",
   "scripts": {
