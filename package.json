@@ -35,7 +35,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "eslint": "^5.0.1",
+    "eslint": "^6.3.0",
     "jest": "^23.1.0",
     "prettier": "^1.13.5",
     "prettier-webpack-plugin": "^1.0.0",
